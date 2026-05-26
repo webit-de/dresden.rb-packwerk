@@ -110,22 +110,31 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 **Ziel:** Packwerk in Aktion — Violations entstehen, Packages werden definiert, Regeln greifen.
 
-**Empfehlung:** Vorbereitetes Demo-Repo verwenden, nicht den echten webit-Code (sauberer, kein Risiko von Credentials im Screen-Share).
+**Empfehlung:** Vorbereitetes Demo-Repo verwenden, angelehnt an dresdenrb.onruby.de — das Publikum kennt die Seite, das macht die Demo sofort nahbar.
 
 **Demo-Struktur:**
 ```
 packs/
-  billing/
-  orders/
-  users/
+  users/       # Mitglieder, Profile, Authentifizierung
+  events/      # Treffen, Termine, Locations
+  topics/      # Vortragsthemen, Vorschläge
+  ticketing/   # Anmeldung zu Events, Platzverwaltung
+  billing/     # Rechnungen, Zahlungen (neu)
 ```
 
+**Realistische Abhängigkeiten (für den Vortrag):**
+- `ticketing` → `events` (ein Ticket gehört zu einem Event) ✓ legitim
+- `ticketing` → `users` (wer hat sich angemeldet) ✓ legitim
+- `billing` → `ticketing` (Rechnung für eine Anmeldung) ✓ legitim
+- `events` → `Billing::Invoice` ✗ **Violation** — Events sollten nichts von Billing wissen
+- `topics` → `Users::SubscriptionStatus` ✗ **Violation** — greift auf private Klasse zu
+
 **Ablauf:**
-1. **Ausgangslage zeigen** (1–2 min) — Rails-Projekt ohne Packages, `orders` benutzt intern etwas aus `billing`
+1. **Ausgangslage zeigen** (1–2 min) — Rails-Projekt ohne Packages, `events` ruft direkt `Billing::Invoice.create` auf
 2. **Package anlegen & ersten Check** (2 min) — `packs/billing` mit `enforce_privacy: true` und `enforce_dependencies: true`, dann `packwerk check` — Violations erscheinen
-3. **Violation lesen** (2 min) — eine Violation erklären: was bedeutet die Meldung, welche Zeile, warum ist das ein Problem?
+3. **Violation lesen** (2 min) — die `events` → `Billing::Invoice` Violation erklären: was bedeutet die Meldung, welche Zeile, warum ist das falsch?
 4. **`packwerk update`** (1 min) — `package_todo.yml` generieren: bestehende Violations dokumentieren statt blocken
-5. **Eine Violation beheben** (2 min) — Public API definieren, Dependency erlauben, `packwerk check` wird grün
+5. **Eine Violation beheben** (2 min) — `Billing::Invoice` als public API deklarieren oder Verantwortung in `ticketing` verschieben, `packwerk check` wird grün
 
 ---
 
