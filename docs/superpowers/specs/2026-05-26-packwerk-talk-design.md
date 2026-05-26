@@ -8,13 +8,44 @@
 - **Format:** Vortrag mit Live-Demo
 - **Sprecher:** Steve Reinke (webit) — produktiver Einsatz von Packwerk im eigenen Projekt
 
-## Hauptbotschaft
+---
 
-> Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte Architekturprobleme löst."
+## Titelideen
 
-Kernsatz für den Vortrag:
+**Technisch + neugierig:**
+- „Modular Monoliths in Rails mit Packwerk"
+- „Rails ohne Big Ball of Mud"
+- „Grenzen ziehen im Rails-Monolithen"
+- „Packwerk in der Praxis"
+
+**Provokativ / Meetup-Style:**
+- „Packwerk kann deinen Monolithen nicht retten"
+- „Der Mythos des modularen Monolithen"
+- „Wie Shopify versucht hat, Rails skalierbar zu halten"
+
+---
+
+## Roter Faden
+
+Der Talk beantwortet eine größere Frage:
+
+> „Wie hält man große Rails-Monolithen langfristig wartbar?"
+
+Packwerk ist das Werkzeug innerhalb dieser Story — kein Feature-Vortrag, sondern ein Architektur-Talk.
+
+**Hauptthese:**
+
+> *„Rails skaliert technisch erstaunlich gut. Was nicht skaliert, sind implizite Abhängigkeiten zwischen Teams und Domänen."*
+
+**Kernsatz:**
 
 > *„Packwerk löst keine schlechte Architektur. Es macht schlechte Architektur sichtbar."*
+
+---
+
+## Hauptbotschaft
+
+Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte Architekturprobleme löst."
 
 ---
 
@@ -36,9 +67,14 @@ Kernsatz für den Vortrag:
 **Ziel:** Das Publikum fühlt den Schmerz, bevor die Lösung gezeigt wird.
 
 1. **Einstiegsfrage** — „Wer hat schon mal in einem Rails-Projekt gearbeitet, wo niemand mehr wusste, was man noch anfassen darf?"
-2. **Das Bild des wachsenden Monolithen** — am Anfang alles einfach, nach 3 Jahren hängt `User` an `Order` an `Billing` an `User` — niemand traut sich mehr zu refactoren
+2. **Das Bild des wachsenden Monolithen** — am Anfang alles einfach, nach 3 Jahren:
+   - `User` kennt plötzlich `Billing`
+   - `Billing` kennt `Notifications`
+   - `Notifications` greift auf `Orders` zu
+   - Alles hängt von allem ab, niemand weiß mehr was „public API" ist
 3. **Konkretes Symptom** — eine Änderung in einem Modell bricht 5 unerwartete Tests in völlig anderen Bereichen
-4. **Überleitung** — „Wie macht man unsichtbare Abhängigkeiten sichtbar — und durchsetzbar?"
+4. **Kernaussage** — „Ruby gibt euch Freiheit. Große Teams bezahlen dafür."
+5. **Überleitung** — „Wie macht man unsichtbare Abhängigkeiten sichtbar — und durchsetzbar?"
 
 ---
 
@@ -46,13 +82,27 @@ Kernsatz für den Vortrag:
 
 **Ziel:** Die Kernidee verstehen — ohne in der Doku zu ertrinken.
 
-1. **Herkunft** — Shopify entwickelte es für ihren Multi-Millionen-Zeilen-Monolithen
-2. **Drei Kernkonzepte** (je ~30 Sekunden):
+1. **Herkunft** — Shopify entwickelte es für ihren Multi-Millionen-Zeilen-Monolithen. Nicht wegen Ruby-Syntax — wegen Team- und Skalierungsproblemen.
+
+2. **Analogie in einem Satz** — „Packwerk ist ESLint für Architekturgrenzen."
+
+3. **Drei Kernkonzepte** (je ~30 Sekunden):
    - **Package** — Verzeichnis mit `package.yml`, definiert eine fachliche Einheit (z.B. `packs/billing`)
    - **Privacy** — Klassen können `private` sein: nur das eigene Package darf sie nutzen
    - **Dependency** — ein Package deklariert explizit, welche anderen Packages es nutzen darf
-3. **Das Werkzeug** — statischer Analyse-Checker: liest Code, meldet Verstöße — keine Runtime-Magie, kein Framework-Lock-in
-4. **`package_todo.yml`** — bestehende Verstöße werden dokumentiert, nicht sofort behoben: pragmatischer Einstieg in Legacy-Projekten
+
+4. **Das Werkzeug** — statischer Analyse-Checker: liest Code, meldet Verstöße — keine Runtime-Magie, kein Framework-Lock-in
+
+5. **`package_todo.yml`** — bestehende Verstöße werden dokumentiert, nicht sofort behoben: pragmatischer Einstieg in Legacy-Projekten
+
+6. **Einordnung im Vergleich:**
+
+| Ansatz | Vorteil | Nachteil |
+|---|---|---|
+| Klassischer Rails-Monolith | Schnell | Entropie |
+| Rails Engines | Stärkere Isolation | Schwergewichtiger |
+| Microservices | Klare Grenzen | Operative Hölle |
+| Packwerk | Leichte Boundary Enforcement | Nur statische Analyse |
 
 ---
 
@@ -62,11 +112,20 @@ Kernsatz für den Vortrag:
 
 **Empfehlung:** Vorbereitetes Demo-Repo verwenden, nicht den echten webit-Code (sauberer, kein Risiko von Credentials im Screen-Share).
 
-1. **Ausgangslage zeigen** (1–2 min) — Rails-Projekt mit gewachsenen Abhängigkeiten, noch ohne Packages
+**Demo-Struktur:**
+```
+packs/
+  billing/
+  orders/
+  users/
+```
+
+**Ablauf:**
+1. **Ausgangslage zeigen** (1–2 min) — Rails-Projekt ohne Packages, `orders` benutzt intern etwas aus `billing`
 2. **Package anlegen & ersten Check** (2 min) — `packs/billing` mit `enforce_privacy: true` und `enforce_dependencies: true`, dann `packwerk check` — Violations erscheinen
 3. **Violation lesen** (2 min) — eine Violation erklären: was bedeutet die Meldung, welche Zeile, warum ist das ein Problem?
 4. **`packwerk update`** (1 min) — `package_todo.yml` generieren: bestehende Violations dokumentieren statt blocken
-5. **Eine Violation beheben** (2 min) — live Umstrukturierung, `packwerk check` wird grün
+5. **Eine Violation beheben** (2 min) — Public API definieren, Dependency erlauben, `packwerk check` wird grün
 
 ---
 
@@ -93,6 +152,7 @@ Kernsatz für den Vortrag:
 - `package_todo.yml` kann zur Ausrede werden, Violations nie wirklich zu beheben
 - Zu viele Packages machen alles schlimmer — Micro-Packaging ist ein Anti-Pattern
 - „Modular Monolith" kann Buzzword werden ohne die Disziplin dahinter
+- Teams umgehen Regeln irgendwann — Werkzeug ersetzt keine Teamkultur
 
 **Schluss des Blocks:** „Ich zeige euch das nicht um euch abzuschrecken — sondern damit ihr realistisch einsteigt."
 
@@ -111,7 +171,16 @@ Kernsatz für den Vortrag:
 
 **Ressource:** Shopify Engineering Blog + GitHub-Repo (ein Link, kein Folienstapel)
 
-**Abschluss-Satz:**
-> *„Packwerk zeigt euch, was ihr schon immer wusstet — aber nie beweisen konntet."*
+**Abschluss-Satz mit aktuellem Bezug:**
+> *„Wenn AI schneller Code produziert, brauchen wir bessere Grenzen zwischen diesem Code."*
 
 Dann Q&A öffnen.
+
+---
+
+## Was im Vortrag vermieden werden sollte
+
+- Zu viel YAML — langweilt sofort
+- Zu viele Internals (AST Parsing etc.) — nur kurz erwähnen
+- Zu akademisch — Ruby User Groups mögen pragmatische Talks
+- Folienstapel mit 10 Links am Ende
