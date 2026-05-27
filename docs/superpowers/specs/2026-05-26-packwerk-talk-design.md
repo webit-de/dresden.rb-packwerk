@@ -93,6 +93,7 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
    - **Dependency** — ein Package deklariert explizit, welche anderen Packages es nutzen darf
 
 4. **Das Werkzeug** — statischer Analyse-Checker: liest Code, meldet Verstöße — keine Runtime-Magie, kein Framework-Lock-in
+   *Tonspur:* Packwerk bindet den Code nicht enger an Rails — und auch nicht an Packwerk selbst.
 
 5. **`package_todo.yml`** — bestehende Verstöße werden dokumentiert, nicht sofort behoben: pragmatischer Einstieg in Legacy-Projekten
 
