@@ -28,8 +28,6 @@ paginate: true
 
 <!-- _class: section -->
 
-<div class="block-nr">Block 01</div>
-
 # Motivation
 
 ## Der Schmerz eines wachsenden Monolithen
@@ -68,8 +66,6 @@ MVC und Convention over Configuration lösen nicht das Problem von Abhängigkeit
 ---
 
 <!-- _class: section -->
-
-<div class="block-nr">Block 02</div>
 
 # Packwerk-Konzept
 
@@ -123,8 +119,6 @@ Bestehende Verstöße werden dokumentiert, nicht sofort behoben — pragmatische
 ---
 
 <!-- _class: section -->
-
-<div class="block-nr">Block 03</div>
 
 # Wie setzen wir Packwerk bei webit! ein?
 
@@ -200,8 +194,6 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 ---
 
 <!-- _class: section -->
-
-<div class="block-nr">Block 04</div>
 
 # Fazit & Q&A
 
