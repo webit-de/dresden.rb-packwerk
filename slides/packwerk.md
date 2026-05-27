@@ -6,12 +6,12 @@ paginate: true
 
 <!-- _class: title -->
 
-<div class="tag">Dresden.rb · 2026</div>
+<div class="tag">Dresden.rb · 28.05.2026</div>
 
-# Rails ohne Big Ball of Mud
+# Packwerk
 
-<div class="subtitle">Packwerk in der Praxis</div>
-<div class="speaker">Steve Reinke & Christoph Wagner · webit!</div>
+<div class="subtitle">Was ist das und wie nutzen wir es?</div>
+<div class="speaker">Steve Reinke & Christoph Wagner - webit! Gesellschaft für neue Medien mbH</div>
 
 <div class="deco"><span></span><span></span></div>
 
@@ -19,10 +19,10 @@ paginate: true
 
 ## Agenda
 
-1. **Motivation** — Warum reicht Rails-Struktur allein nicht?
-2. **Packwerk-Konzept** — Was ist es, wie funktioniert es?
-3. **Wie setzen wir Packwerk bei webit! ein?** — Praxis & Erfahrungen
-4. **Fazit & Q&A**
+1. **Motivation**
+2. **Packwerk**
+3. **Einsatz bei webit!**
+4. **Fazit**
 
 ---
 
@@ -35,9 +35,9 @@ paginate: true
 
 ---
 
-## Wer kennt das?
+<!-- _class: quote -->
 
-> „Wer hat schon mal eine Codeänderung gemacht, bei der plötzlich Dinge umgefallen sind, mit denen du nichts zu tun haben wolltest?"
+> # Hast du schon mal eine Codeänderung gemacht, bei der plötzlich Dinge umgefallen sind, mit denen du nichts zu tun haben wolltest?
 
 ---
 
@@ -47,8 +47,8 @@ paginate: true
 
 ## Rails gibt Struktur — aber nicht genug
 
-> **„Rails gibt euch eine Struktur für Dateien.**
-> **Wer mit wem reden darf — das regelt niemand."**
+> Rails gibt euch eine Struktur für Dateien.
+> Wer mit wem reden darf — das regelt niemand.
 
 MVC und Convention over Configuration lösen nicht das Problem von Abhängigkeiten.
 
@@ -56,20 +56,20 @@ MVC und Convention over Configuration lösen nicht das Problem von Abhängigkeit
 
 ## Warum nicht einfach Disziplin?
 
-- Menschen vergessen Regeln
-- Neue Entwickler kennen sie nicht
-- Zeitdruck gewinnt immer
+- Menschen vergessen Regeln.
+- Neue Entwickler kennen sie nicht.
+- Zeitdruck gewinnt immer.
 
-> **„Code Reviews skalieren schlechter als automatische Regeln."**
+> Code Reviews skalieren schlechter als automatische Regeln.
 
-→ Wie macht man Abhängigkeiten **sichtbar — und durchsetzbar?**
+→ Wie macht man Abhängigkeiten **sichtbar — und Regeln durchsetzbar?**
 
 ---
 
 <!-- _class: section -->
-<!-- header: "Packwerk-Konzept" -->
+<!-- header: "Packwerk" -->
 
-# Packwerk-Konzept
+# Packwerk
 
 ## Was ist es, wie funktioniert es?
 
@@ -77,35 +77,30 @@ MVC und Convention over Configuration lösen nicht das Problem von Abhängigkeit
 
 ## Woher kommt Packwerk?
 
-Shopify entwickelte es für ihren großen Rails-Monolithen — nicht wegen Ruby-Syntax, sondern wegen Team- und Skalierungsproblemen.
+Shopify entwickelte es für ihr großes monolithisches System und veröffentlichte es im September 2020.
 
-Veröffentlicht **September 2020.**
-
-> **„Packwerk ist ein Linter für Architekturgrenzen."**
+> Packwerk ist ein Linter für Architekturgrenzen.
 
 ---
 
 ## Drei Kernkonzepte
 
-**Paket** — Verzeichnis mit `package.yml`, definiert eine fachliche Einheit
-`packs/billing`, `packs/users`, …
-
-**Privacy** — Klassen können `private` sein: nur das eigene Paket darf sie nutzen
-
-**Dependency** — ein Paket deklariert explizit, welche anderen Pakete es nutzen darf
+- **Paket** — Verzeichnis mit `package.yml`, definiert eine (fachliche) Einheit `packs/billing`, `packs/users`, …
+- **Privacy** — Klassen können `private` sein: nur das eigene Paket darf sie nutzen.
+- **Dependency** — Ein Paket deklariert explizit, welche anderen Pakete es nutzen darf.
 
 ---
 
 ## Das Werkzeug
 
-**Statischer Analyse-Checker:** liest Code, meldet Verstöße
-Keine Runtime-Magie · Kein Framework-Lock-in
+- Statischer Analyse-Checker
+  - liest Code, meldet Verstöße
+  - keine Runtime-Magie, kein Framework-Lock-in
 
-*Packwerk bindet den Code nicht enger an Rails — und auch nicht an Packwerk selbst.*
+> Packwerk bindet den Code nicht enger an Rails — und auch nicht an Packwerk selbst.
 
-**`package_todo.yml`**
-
-Bestehende Verstöße werden dokumentiert, nicht sofort behoben — pragmatischer Einstieg in Legacy-Projekten.
+- **`package_todo.yml`**
+  - Bestehende Verstöße können dokumentiert werden, statt sofort behoben — pragmatischer Einstieg in Legacy-Projekten.
 
 ---
 
@@ -121,28 +116,23 @@ Bestehende Verstöße werden dokumentiert, nicht sofort behoben — pragmatische
 ---
 
 <!-- _class: section -->
-<!-- header: "webit! Einsatz" -->
+<!-- header: "Einsatz bei webit!" -->
 
-# Wie setzen wir Packwerk bei webit! ein?
+# Einsatz bei webit!
 
-## Paketstruktur & Erfahrungen aus der Praxis
+## Wie nutzen wir bei webit! Packwerk?
 
 ---
 
-## JACK — Paketabhängigkeiten
+## JACK — Ein Beispiel aus der Praxis
 
 JACK ist eine Plattform zur Planung und Auslieferung von Lebensmitteln für Großküchen.
 
-```
-ROOT / app/  (Controllers, Views, Jobs)
-        │  nur über public/ und Events
-        ├──▶ order_management
-        ├──▶ portioning  ↔  material_tracking
-        └──▶ commissioning  ↔  logistics
-
-        alle abhängig von:
-        events → architecture_core → core
-```
+- Packwerk **von Beginn an** im Einsatz
+- **23 Pakete** insgesamt
+- **5 Domänenpakete:** `order_management`, `portioning`, `commissioning`, `material_tracking`, `logistics`
+- je mit Unterpaketen: `domain`, `infrastructure`, `application`, `core_extension`
+- **3 Basis-Pakete:** `core`, `architecture_core`, `events`
 
 ---
 
@@ -163,23 +153,14 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 
 ---
 
-## JACK bei webit! — Kontext
-
-- **23 Pakete** insgesamt
-- **5 Domänenpakete** (order_management, portioning, commissioning, material_tracking, logistics)
-- je mit Unterpaketen: `domain/`, `infrastructure/`, `application/`, `core_extension/`
-- **3 Basis-Pakete:** `core`, `architecture_core`, `events`
-- Packwerk **von Beginn an** im Einsatz
-
----
-
 <!-- _class: quote -->
 
-# „Packwerk löst keine schlechte Architektur. Es macht schlechte Architektur sichtbar."
+> # Packwerk löst keine schlechte Architektur.
+> # Es macht schlechte Architektur sichtbar.
 
 ---
 
-## Was gut funktioniert hat
+## Was hat gut funktioniert?
 
 - Lose Kopplung der Domänenaspekte durch Pakete mit klar definierter public API
 - Strikte Architekturregeln durch Unterpakete — Domänenschicht frei von externen Abhängigkeiten (DDD)
@@ -188,7 +169,7 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 
 ---
 
-## Herausforderungen
+## Welchen Herausforderungen sind wir begegnet?
 
 - Die richtige Paketstruktur und -größe zu finden ist nicht trivial — falsche Einteilung kostet beim Umschneiden Zeit
 - Teamkonsens zu Architekturregeln notwendig — fehlendes Wissen erzeugt Reibungsverluste
@@ -199,9 +180,9 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 <!-- _class: section -->
 <!-- header: "Fazit" -->
 
-# Fazit & Q&A
+# Fazit
 
-## Wann lohnt es sich?
+## Wann lohnt sich der Einsatz von Packwerk?
 
 ---
 
@@ -217,11 +198,23 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 
 ---
 
-## Ressourcen & Abschluss
+<!-- _class: quote -->
 
-**GitHub:** [Shopify/packwerk](https://github.com/Shopify/packwerk)
-**Blog:** [Shopify Engineering Blog](https://shopify.engineering/enforcing-modularity-rails-apps-packwerk)
+> # KI schreibt Code schneller, als Menschen ihn in der Tiefe reviewen und prüfen können. 
+> # Gut strukturierter Code macht das leichter. Packwerk setzt diese Struktur durch.
 
-> „KI schreibt Code schneller, als Menschen ihn in der Tiefe reviewen und prüfen können. Gut strukturierter Code macht das leichter. Packwerk setzt diese Struktur durch."
+---
 
-**Fragen?**
+<!-- _class: quote -->
+<!-- header: "" -->
+
+# Danke für eure Aufmerksamkeit.
+# Gibt es Fragen?
+
+---
+
+Quellen:
+
+GitHub: [Shopify/packwerk](https://github.com/Shopify/packwerk)
+Diagramm: [Packwerk-Doku](https://github.com/Shopify/packwerk/blob/main/docs/cohesion.png)
+Blog: [Shopify Engineering Blog](https://shopify.engineering/enforcing-modularity-rails-apps-packwerk)

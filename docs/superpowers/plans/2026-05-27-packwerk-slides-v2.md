@@ -215,9 +215,7 @@ git commit -m "feat: add Block 1 Motivation slides (3-7)"
 
 ## Woher kommt Packwerk?
 
-Shopify entwickelte es für ihren großen Rails-Monolithen — nicht wegen Ruby-Syntax, sondern wegen Team- und Skalierungsproblemen.
-
-Veröffentlicht **September 2020.**
+Shopify entwickelte es für ihr großes monolithisches System und veröffentlichte es im September 2020.
 
 > **„Packwerk ist ein Linter für Architekturgrenzen."**
 ```
