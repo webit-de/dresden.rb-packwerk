@@ -55,9 +55,8 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 |---|---|---|
 | 1. Motivation | Der Schmerz eines wachsenden Monolithen | 4–5 min |
 | 2. Packwerk-Konzept | Was ist es, wie funktioniert es (begrifflich) | 5 min |
-| 3. Live Demo | Packwerk in Aktion am echten Code | 10 min |
-| 4. Erfahrungen aus der Praxis | Webit-Learnings + ehrliche Nachteile | 7–8 min |
-| 5. Fazit & Q&A | Wann lohnt es sich, Ressourcen | 3 min |
+| 3. Wie setzen wir Packwerk bei webit! ein. | Package-Struktur + Erfahrungen aus der Praxis | 17–18 min |
+| 4. Fazit & Q&A | Wann lohnt es sich, Ressourcen | 3 min |
 | **Gesamt** | | **~29–31 min** |
 
 ---
@@ -108,39 +107,16 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 ---
 
-## Block 3: Live Demo (10 min)
+## Block 3: Wie setzen wir Packwerk bei webit! ein. (17–18 min)
 
-**Ziel:** Packwerk in Aktion — Violations entstehen, Packages werden definiert, Regeln greifen.
+**Ziel:** Am echten Projekt zeigen, wie Packwerk strukturiert wird — und ehrlich berichten, was gut lief und was schwierig war.
 
-**Empfehlung:** Vorbereitetes Demo-Repo verwenden, angelehnt an dresdenrb.onruby.de — das Publikum kennt die Seite, das macht die Demo sofort nahbar.
+### Package-Struktur (2–3 min)
 
-**Demo-Struktur:**
-```
-packs/
-  users/       # Mitglieder, Profile, Authentifizierung
-  events/      # Treffen, Termine, Locations
-  topics/      # Vortragsthemen, Vorschläge
-  ticketing/   # Anmeldung zu Events, Platzverwaltung
-  billing/     # Rechnungen, Zahlungen (neu)
-```
+- Überblick über die Packages im webit-Projekt *(Platzhalter — echte Package-Liste eintragen)*
+- Welche Grenzen gelten — wer darf mit wem sprechen
 
-**Realistische Abhängigkeiten (für den Vortrag):**
-- `ticketing` → `events` (ein Ticket gehört zu einem Event) ✓ legitim
-- `ticketing` → `users` (wer hat sich angemeldet) ✓ legitim
-- `billing` → `ticketing` (Rechnung für eine Anmeldung) ✓ legitim
-- `events` → `Billing::Invoice` ✗ **Violation** — Events sollten nichts von Billing wissen
-- `topics` → `Users::SubscriptionStatus` ✗ **Violation** — greift auf private Klasse zu
-
-**Ablauf:**
-1. **Ausgangslage zeigen** (1–2 min) — Rails-Projekt ohne Packages, `events` ruft direkt `Billing::Invoice.create` auf
-2. **Package anlegen & ersten Check** (2 min) — `packs/billing` mit `enforce_privacy: true` und `enforce_dependencies: true`, dann `packwerk check` — Violations erscheinen
-3. **Violation lesen** (2 min) — die `events` → `Billing::Invoice` Violation erklären: was bedeutet die Meldung, welche Zeile, warum ist das falsch?
-4. **`packwerk update`** (1 min) — `package_todo.yml` generieren: bestehende Violations dokumentieren statt blocken
-5. **Eine Violation beheben** (2 min) — `Billing::Invoice` als public API deklarieren oder Verantwortung in `ticketing` verschieben, `packwerk check` wird grün
-
----
-
-## Block 4: Erfahrungen aus der Praxis (7–8 min)
+### Erfahrungen (7–8 min)
 
 **Einstieg mit dem Kernsatz** (groß auf der Folie, kurze Pause):
 
@@ -169,7 +145,7 @@ packs/
 
 ---
 
-## Block 5: Fazit & Q&A (3 min)
+## Block 4: Fazit & Q&A (3 min)
 
 **Wann lohnt sich Packwerk?**
 - Rails-Monolith mit mehreren Teams oder mehr als einem Entwickler pro Bereich

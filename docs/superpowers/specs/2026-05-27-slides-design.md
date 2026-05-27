@@ -114,28 +114,28 @@ html: true
 | # | Typ | Titel / Inhalt | Block |
 |---|---|---|---|
 | 1 | `title` | Rails ohne Big Ball of Mud | — |
-| 2 | Standard | Agenda (5 Blöcke) | — |
+| 2 | Standard | Agenda (4 Blöcke) | — |
 | 3 | `section` | Block 1: Motivation | 1 |
 | 4 | Standard | Einstiegsfrage | 1 |
 | 5 | Bild | Cohesion-Diagramm (Shopify/packwerk) — `cohesion.png` | 1 |
-| 6 | Standard | Kernaussage + Überleitung | 1 |
+| 6 | Standard | Kernaussage + Disziplin-Einwand + Überleitung | 1 |
 | 7 | `section` | Block 2: Packwerk-Konzept | 2 |
 | 8 | Standard | Herkunft: Shopify + Analogie | 2 |
 | 9 | Standard | Drei Kernkonzepte | 2 |
 | 10 | Standard | Das Werkzeug + `package_todo.yml` | 2 |
 | 11 | Standard | Vergleichstabelle | 2 |
-| 12 | `section` | Block 3: Live Demo | 3 |
-| 13 | Standard | Demo-Struktur (dresdenrb-Domäne) | 3 |
-| 14 | `section` | Block 4: Erfahrungen aus der Praxis | 4 |
-| 15 | Standard | Kernsatz (groß) | 4 |
-| 16 | Standard | Was gut funktioniert hat | 4 |
-| 17 | Standard | Was schwieriger war | 4 |
-| 18 | Standard | Ehrliche Nachteile | 4 |
-| 19 | `section` | Block 5: Fazit & Q&A | 5 |
-| 20 | Standard | Wann lohnt es sich / wann nicht | 5 |
-| 21 | Standard | Ressource + Abschluss-Satz | 5 |
+| 12 | `section` | Block 3: Wie setzen wir Packwerk bei webit! ein. | 3 |
+| 13 | Standard | Package-Struktur webit | 3 |
+| 14 | Standard | Package-Abhängigkeiten (wer darf mit wem) | 3 |
+| 15 | Standard | Kernsatz (groß) | 3 |
+| 16 | Standard | Was gut funktioniert hat | 3 |
+| 17 | Standard | Was schwieriger war | 3 |
+| 18 | Standard | Ehrliche Nachteile | 3 |
+| 19 | `section` | Block 4: Fazit & Q&A | 4 |
+| 20 | Standard | Wann lohnt es sich / wann nicht | 4 |
+| 21 | Standard | Ressource + Abschluss-Satz | 4 |
 
-**Gesamt: 21 Folien** (5 Sektion-Trenner + 15 Inhaltsfolien + 1 Bild-Folie)
+**Gesamt: 21 Folien** (4 Sektion-Trenner + 16 Inhaltsfolien + 2 Bild-Folien)
 
 **Bild-Folie (Cohesion-Diagramm):**
 - URL: `https://raw.githubusercontent.com/Shopify/packwerk/main/docs/cohesion.png`
