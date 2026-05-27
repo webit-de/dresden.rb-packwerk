@@ -148,8 +148,11 @@ lib/packages/portioning/           ← Domain-Package
 ├── infrastructure/                ← eigenes Packwerk-Package
 │   └── package.yml                  visible_to: [portioning]
 │
-└── application/                   ← eigenes Packwerk-Package
-    └── package.yml                  visible_to: [portioning]
+├── application/                   ← eigenes Packwerk-Package
+│   └── package.yml                  visible_to: [portioning]
+│
+└── core_extension/                ← eigenes Packwerk-Package
+    └── package.yml                  geteilte Basistypen für andere Packages
 ```
 
 Cross-Package-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen zwischen Packages.
