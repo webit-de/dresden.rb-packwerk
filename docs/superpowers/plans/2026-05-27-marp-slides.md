@@ -404,8 +404,6 @@ paginate: true
 
 <!-- _class: section -->
 
-<div class="block-nr">Block 01</div>
-
 # Motivation
 
 ## Der Schmerz eines wachsenden Monolithen
@@ -414,7 +412,7 @@ paginate: true
 
 ## Wer kennt das?
 
-> „Wer hat schon mal in einem Rails-Projekt gearbeitet, wo niemand mehr wusste, was man noch anfassen darf?"
+> „Wer hat schon mal eine Codeänderung gemacht, bei der plötzlich Dinge umgefallen sind, mit denen du nichts zu tun haben wolltest?"
 
 ---
 
@@ -444,8 +442,6 @@ MVC und Convention over Configuration lösen nicht das Problem von Abhängigkeit
 ---
 
 <!-- _class: section -->
-
-<div class="block-nr">Block 02</div>
 
 # Packwerk-Konzept
 
@@ -499,8 +495,6 @@ Bestehende Verstöße werden dokumentiert, nicht sofort behoben — pragmatische
 ---
 
 <!-- _class: section -->
-
-<div class="block-nr">Block 03</div>
 
 # Wie setzen wir Packwerk bei webit! ein?
 
@@ -577,8 +571,6 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 
 <!-- _class: section -->
 
-<div class="block-nr">Block 04</div>
-
 # Fazit & Q&A
 
 ## Wann lohnt es sich?
@@ -588,22 +580,21 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 ## Wann lohnt sich Packwerk?
 
 **Ja, wenn:**
-- Rails-Monolith mit mehreren Teams oder Entwicklern pro Bereich
-- Architektur-Diskussionen zeigen immer wieder dieselben Probleme
-- Langfristig Services angestrebt, aber der Zeitpunkt noch nicht gekommen
+- Langfristige Lebensdauer eines Rails-Monolithen, vermutlich insbesondere, wenn mehrere Teams daran arbeiten
+- Wenn Architektur-Smells auffallen, z.B. durch [Rubrowser](https://github.com/emad-elsaid/rubrowser)
+- Wenn langfristig Services angestrebt werden, aber der Zeitpunkt noch nicht gekommen ist
 
 **Eher nicht, wenn:**
-- Kleines Team mit einem Codebase-Owner
-- Frühes Projekt — erst das Produkt finden, dann Struktur
+- Projekte in früher Phase — erst das Produkt finden, dann Struktur
 
 ---
 
-## Ressourcen
+## Ressourcen & Abschluss
 
-**GitHub:** `Shopify/packwerk`
-**Blog:** Shopify Engineering Blog — *"Deconstructing the Monolith"*
+**GitHub:** [Shopify/packwerk](https://github.com/Shopify/packwerk)
+**Blog:** [Shopify Engineering Blog](https://shopify.engineering/enforcing-modularity-rails-apps-packwerk)
 
-> **„Wenn AI schneller Code produziert, brauchen wir bessere Grenzen zwischen diesem Code."**
+> „KI schreibt Code schneller, als Menschen ihn in der Tiefe reviewen und prüfen können. Gut strukturierter Code macht das leichter. Packwerk setzt diese Struktur durch."
 
 **Fragen?**
 ```
@@ -643,7 +634,7 @@ xdg-open slides/packwerk.html
 Checklist:
 - [ ] 22 Folien vorhanden (Seitenzahl rechts unten)
 - [ ] Titelfolie: weißer Hintergrund, grünes Tag, Anthrazit-Titel
-- [ ] Sektion-Folien: Anthrazit-Hintergrund, grüne Linie oben, Block-Nummer grün
+- [ ] Sektion-Folien: Anthrazit-Hintergrund, grüne Linie oben, Titel weiß
 - [ ] Standard-Folien: weiß, grüne Linie oben, grüne Linie unten, Titel mit grüner Unterstreichung
 - [ ] Zitat-Folie (Kernsatz): zentriert, kein Border unten beim Titel
 - [ ] Cohesion-Diagramm (Folie 5) sichtbar
