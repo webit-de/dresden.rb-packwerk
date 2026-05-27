@@ -65,7 +65,7 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 **Ziel:** Das Publikum fühlt den Schmerz, bevor die Lösung gezeigt wird — und versteht, warum Disziplin allein keine Antwort ist.
 
-1. **Einstiegsfrage** — „Wer hat schon mal in einem Rails-Projekt gearbeitet, wo niemand mehr wusste, was man noch anfassen darf?"
+1. **Einstiegsfrage** — „Wer hat schon mal eine Codeänderung gemacht, bei der plötzlich Dinge umgefallen sind, mit denen du nichts zu tun haben wolltest?"
 2. **Bild: Cohesion-Diagramm (Shopify/packwerk)** — zeigt visuell, wie Abhängigkeiten im Monolithen eskalieren
    ![Cohesion](https://raw.githubusercontent.com/Shopify/packwerk/main/docs/cohesion.png)
 3. **Kernaussage** — „Rails gibt euch eine Struktur für Dateien. Wer mit wem reden darf — das regelt niemand."

@@ -38,7 +38,7 @@ paginate: true
 
 ## Wer kennt das?
 
-> „Wer hat schon mal in einem Rails-Projekt gearbeitet, wo niemand mehr wusste, was man noch anfassen darf?"
+> „Wer hat schon mal eine Codeänderung gemacht, bei der plötzlich Dinge umgefallen sind, mit denen du nichts zu tun haben wolltest?"
 
 ---
 
