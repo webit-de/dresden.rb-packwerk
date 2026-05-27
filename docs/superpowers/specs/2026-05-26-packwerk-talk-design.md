@@ -53,18 +53,18 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 | Block | Inhalt | Zeit |
 |---|---|---|
-| 1. Hook & Problem | Der Schmerz eines wachsenden Monolithen | 3–4 min |
+| 1. Hook & Problem | Der Schmerz eines wachsenden Monolithen | 4–5 min |
 | 2. Packwerk-Konzept | Was ist es, wie funktioniert es (begrifflich) | 5 min |
 | 3. Live Demo | Packwerk in Aktion am echten Code | 10 min |
 | 4. Erfahrungen aus der Praxis | Webit-Learnings + ehrliche Nachteile | 7–8 min |
 | 5. Fazit & Q&A | Wann lohnt es sich, Ressourcen | 3 min |
-| **Gesamt** | | **~28–30 min** |
+| **Gesamt** | | **~29–31 min** |
 
 ---
 
 ## Block 1: Hook & Problem (3–4 min)
 
-**Ziel:** Das Publikum fühlt den Schmerz, bevor die Lösung gezeigt wird.
+**Ziel:** Das Publikum fühlt den Schmerz, bevor die Lösung gezeigt wird — und versteht, warum Disziplin allein keine Antwort ist.
 
 1. **Einstiegsfrage** — „Wer hat schon mal in einem Rails-Projekt gearbeitet, wo niemand mehr wusste, was man noch anfassen darf?"
 2. **Bild: Cohesion-Diagramm (Shopify/packwerk)** — zeigt visuell, wie Abhängigkeiten im Monolithen eskalieren
@@ -83,9 +83,9 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 **Ziel:** Die Kernidee verstehen — ohne in der Doku zu ertrinken.
 
-1. **Herkunft** — Shopify entwickelte es für ihren Multi-Millionen-Zeilen-Monolithen. Nicht wegen Ruby-Syntax — wegen Team- und Skalierungsproblemen.
+1. **Herkunft** — Shopify entwickelte es für ihr großes monolithisches System und veröffentlichte es im September 2020.
 
-2. **Analogie in einem Satz** — „Packwerk ist ESLint für Architekturgrenzen."
+2. **Analogie in einem Satz** — „Packwerk ist ein Linter für Architekturgrenzen."
 
 3. **Drei Kernkonzepte** (je ~30 Sekunden):
    - **Package** — Verzeichnis mit `package.yml`, definiert eine fachliche Einheit (z.B. `packs/billing`)
