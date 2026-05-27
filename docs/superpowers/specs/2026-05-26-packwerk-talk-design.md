@@ -67,13 +67,14 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 **Ziel:** Das Publikum fühlt den Schmerz, bevor die Lösung gezeigt wird.
 
 1. **Einstiegsfrage** — „Wer hat schon mal in einem Rails-Projekt gearbeitet, wo niemand mehr wusste, was man noch anfassen darf?"
-2. **Das Bild des wachsenden Monolithen** — am Anfang alles einfach, nach 3 Jahren:
-   - `User` kennt plötzlich `Billing`
-   - `Billing` kennt `Notifications`
-   - `Notifications` greift auf `Orders` zu
-   - Alles hängt von allem ab, niemand weiß mehr was „public API" ist
-3. **Konkretes Symptom** — eine Änderung in einem Modell bricht 5 unerwartete Tests in völlig anderen Bereichen
-4. **Kernaussage** — „Ruby gibt euch Freiheit. Große Teams bezahlen dafür."
+2. **Bild: Cohesion-Diagramm (Shopify/packwerk)** — zeigt visuell, wie Abhängigkeiten im Monolithen eskalieren
+   ![Cohesion](https://raw.githubusercontent.com/Shopify/packwerk/main/docs/cohesion.png)
+3. **Kernaussage** — „Rails gibt euch eine Struktur für Dateien. Wer mit wem reden darf — das regelt niemand."
+4. **Einwand vorwegnehmen: „Warum nicht einfach Disziplin?"**
+   - Menschen vergessen Regeln
+   - Neue Entwickler kennen sie nicht
+   - Zeitdruck gewinnt immer
+   - → *„Code Reviews skalieren schlechter als automatische Regeln."*
 5. **Überleitung** — „Wie macht man unsichtbare Abhängigkeiten sichtbar — und durchsetzbar?"
 
 ---
