@@ -115,10 +115,10 @@ html: true
 |---|---|---|---|
 | 1 | `title` | Rails ohne Big Ball of Mud | — |
 | 2 | Standard | Agenda (5 Blöcke) | — |
-| 3 | `section` | Block 1: Hook & Problem | 1 |
+| 3 | `section` | Block 1: Motivation | 1 |
 | 4 | Standard | Einstiegsfrage | 1 |
-| 5 | Standard | Der wachsende Monolith | 1 |
-| 6 | Standard | Kernsymptom + Überleitung | 1 |
+| 5 | Bild | Cohesion-Diagramm (Shopify/packwerk) — `cohesion.png` | 1 |
+| 6 | Standard | Kernaussage + Überleitung | 1 |
 | 7 | `section` | Block 2: Packwerk-Konzept | 2 |
 | 8 | Standard | Herkunft: Shopify + Analogie | 2 |
 | 9 | Standard | Drei Kernkonzepte | 2 |
@@ -135,7 +135,11 @@ html: true
 | 20 | Standard | Wann lohnt es sich / wann nicht | 5 |
 | 21 | Standard | Ressource + Abschluss-Satz | 5 |
 
-**Gesamt: 21 Folien** (5 Sektion-Trenner + 16 Inhaltsfolien)
+**Gesamt: 21 Folien** (5 Sektion-Trenner + 15 Inhaltsfolien + 1 Bild-Folie)
+
+**Bild-Folie (Cohesion-Diagramm):**
+- URL: `https://raw.githubusercontent.com/Shopify/packwerk/main/docs/cohesion.png`
+- Wird beim Build heruntergeladen oder lokal als `slides/cohesion.png` gecacht
 
 ---
 

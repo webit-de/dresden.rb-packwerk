@@ -53,7 +53,7 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 | Block | Inhalt | Zeit |
 |---|---|---|
-| 1. Hook & Problem | Der Schmerz eines wachsenden Monolithen | 4–5 min |
+| 1. Motivation | Der Schmerz eines wachsenden Monolithen | 4–5 min |
 | 2. Packwerk-Konzept | Was ist es, wie funktioniert es (begrifflich) | 5 min |
 | 3. Live Demo | Packwerk in Aktion am echten Code | 10 min |
 | 4. Erfahrungen aus der Praxis | Webit-Learnings + ehrliche Nachteile | 7–8 min |
@@ -62,7 +62,7 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 ---
 
-## Block 1: Hook & Problem (3–4 min)
+## Block 1: Motivation (4–5 min)
 
 **Ziel:** Das Publikum fühlt den Schmerz, bevor die Lösung gezeigt wird — und versteht, warum Disziplin allein keine Antwort ist.
 
