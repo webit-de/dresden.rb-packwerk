@@ -113,8 +113,46 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 ### Package-Struktur (2–3 min)
 
-- Überblick über die Packages im webit-Projekt *(Platzhalter — echte Package-Liste eintragen)*
-- Welche Grenzen gelten — wer darf mit wem sprechen
+JACK ist eine Plattform zur Planung und Auslieferung von Lebensmitteln für Großküchen — 7 Domain-Packages, strikt getrennt.
+
+**Packages und ihre Abhängigkeiten (Folie):**
+
+```
+┌───────────────────────────────────────────────────────┐
+│                   ROOT / app/                         │
+│            (Controllers, Views, Jobs)                 │
+└──────────────────────┬────────────────────────────────┘
+                       │ nur über public/ und Events
+       ┌───────────────┼──────────────────────┐
+       ▼               ▼                      ▼
+ order_management   portioning          commissioning
+                        ↕                    ↕
+                  material_tracking       logistics
+                       │
+          alle abhängig von
+       events → architecture_core → core
+```
+
+**Aufbau eines Domain-Packages (Folie):**
+
+Jedes Domain-Package enthält selbst mehrere Packwerk-Packages — Packwerk erzwingt also nicht nur Grenzen zwischen Domains, sondern auch zwischen den Schichten *innerhalb* einer Domain:
+
+```
+lib/packages/portioning/           ← Domain-Package
+├── package.yml
+├── public/                        ← sichtbar für alle anderen Packages
+│
+├── domain/                        ← eigenes Packwerk-Package
+│   └── package.yml                  visible_to: [portioning]
+│
+├── infrastructure/                ← eigenes Packwerk-Package
+│   └── package.yml                  visible_to: [portioning]
+│
+└── application/                   ← eigenes Packwerk-Package
+    └── package.yml                  visible_to: [portioning]
+```
+
+Cross-Package-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen zwischen Packages.
 
 ### Erfahrungen (7–8 min)
 
