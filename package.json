@@ -6,6 +6,6 @@
     "watch": "marp --watch slides/packwerk.md -o slides/packwerk.html"
   },
   "devDependencies": {
-    "@marp-team/marp-cli": "^3"
+    "@marp-team/marp-cli": "^4.4.0"
   }
 }
