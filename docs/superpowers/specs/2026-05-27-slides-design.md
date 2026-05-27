@@ -118,24 +118,25 @@ html: true
 | 3 | `section` | Block 1: Motivation | 1 |
 | 4 | Standard | Einstiegsfrage | 1 |
 | 5 | Bild | Cohesion-Diagramm (Shopify/packwerk) — `cohesion.png` | 1 |
-| 6 | Standard | Kernaussage + Disziplin-Einwand + Überleitung | 1 |
-| 7 | `section` | Block 2: Packwerk-Konzept | 2 |
-| 8 | Standard | Herkunft: Shopify + Analogie | 2 |
-| 9 | Standard | Drei Kernkonzepte | 2 |
-| 10 | Standard | Das Werkzeug + `package_todo.yml` | 2 |
-| 11 | Standard | Vergleichstabelle | 2 |
-| 12 | `section` | Block 3: Wie setzen wir Packwerk bei webit! ein. | 3 |
-| 13 | Standard | Package-Struktur webit | 3 |
-| 14 | Standard | Package-Abhängigkeiten (wer darf mit wem) | 3 |
-| 15 | Standard | Kernsatz (groß) | 3 |
-| 16 | Standard | Was gut funktioniert hat | 3 |
-| 17 | Standard | Was schwieriger war | 3 |
-| 18 | Standard | Ehrliche Nachteile | 3 |
-| 19 | `section` | Block 4: Fazit & Q&A | 4 |
-| 20 | Standard | Wann lohnt es sich / wann nicht | 4 |
-| 21 | Standard | Ressource + Abschluss-Satz | 4 |
+| 6 | Standard | Kernaussage | 1 |
+| 7 | Standard | Warum nicht einfach Disziplin? + Überleitung | 1 |
+| 8 | `section` | Block 2: Packwerk-Konzept | 2 |
+| 9 | Standard | Herkunft: Shopify + Analogie | 2 |
+| 10 | Standard | Drei Kernkonzepte | 2 |
+| 11 | Standard | Das Werkzeug + `package_todo.yml` | 2 |
+| 12 | Standard | Vergleichstabelle | 2 |
+| 13 | `section` | Block 3: Wie setzen wir Packwerk bei webit! ein. | 3 |
+| 14 | Standard | JACK: Paketabhängigkeiten (Diagramm) | 3 |
+| 15 | Standard | Aufbau Domänenpaket (Unterpakete) | 3 |
+| 16 | Standard | Kontext: 23 Pakete, von Beginn an | 3 |
+| 17 | Standard | Kernsatz (groß) | 3 |
+| 18 | Standard | Positive Erfahrungen | 3 |
+| 19 | Standard | Herausforderungen | 3 |
+| 20 | `section` | Block 4: Fazit & Q&A | 4 |
+| 21 | Standard | Wann lohnt es sich / wann nicht | 4 |
+| 22 | Standard | Ressource + Abschluss-Satz | 4 |
 
-**Gesamt: 21 Folien** (4 Sektion-Trenner + 16 Inhaltsfolien + 2 Bild-Folien)
+**Gesamt: 22 Folien** (4 Sektion-Trenner + 17 Inhaltsfolien + 1 Bild-Folie)
 
 **Bild-Folie (Cohesion-Diagramm):**
 - URL: `https://raw.githubusercontent.com/Shopify/packwerk/main/docs/cohesion.png`

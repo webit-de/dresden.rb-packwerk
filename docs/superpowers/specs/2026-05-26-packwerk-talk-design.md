@@ -55,7 +55,7 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 |---|---|---|
 | 1. Motivation | Der Schmerz eines wachsenden Monolithen | 4–5 min |
 | 2. Packwerk-Konzept | Was ist es, wie funktioniert es (begrifflich) | 5 min |
-| 3. Wie setzen wir Packwerk bei webit! ein. | Package-Struktur + Erfahrungen aus der Praxis | 17–18 min |
+| 3. Wie setzen wir Packwerk bei webit! ein. | Paketstruktur + Erfahrungen aus der Praxis | 17–18 min |
 | 4. Fazit & Q&A | Wann lohnt es sich, Ressourcen | 3 min |
 | **Gesamt** | | **~29–31 min** |
 
@@ -87,9 +87,9 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 2. **Analogie in einem Satz** — „Packwerk ist ein Linter für Architekturgrenzen."
 
 3. **Drei Kernkonzepte** (je ~30 Sekunden):
-   - **Package** — Verzeichnis mit `package.yml`, definiert eine fachliche Einheit (z.B. `packs/billing`)
-   - **Privacy** — Klassen können `private` sein: nur das eigene Package darf sie nutzen
-   - **Dependency** — ein Package deklariert explizit, welche anderen Packages es nutzen darf
+   - **Paket** — Verzeichnis mit `package.yml`, definiert eine fachliche Einheit (z.B. `packs/billing`)
+   - **Privacy** — Klassen können `private` sein: nur das eigene Paket darf sie nutzen
+   - **Dependency** — ein Paket deklariert explizit, welche anderen Pakete es nutzen darf
 
 4. **Das Werkzeug** — statischer Analyse-Checker: liest Code, meldet Verstöße — keine Runtime-Magie, kein Framework-Lock-in
    *Tonspur:* Packwerk bindet den Code nicht enger an Rails — und auch nicht an Packwerk selbst.
@@ -111,11 +111,11 @@ Das Publikum verlässt den Raum mit dem Gefühl: „Ich sehe, wie Packwerk echte
 
 **Ziel:** Am echten Projekt zeigen, wie Packwerk strukturiert wird — und ehrlich berichten, was gut lief und was schwierig war.
 
-### Package-Struktur (2–3 min)
+### Paketstruktur (2–3 min)
 
-JACK ist eine Plattform zur Planung und Auslieferung von Lebensmitteln für Großküchen — 7 Domain-Packages, strikt getrennt.
+JACK ist eine Plattform zur Planung und Auslieferung von Lebensmitteln für Großküchen — 7 Domänenpakete, strikt getrennt.
 
-**Packages und ihre Abhängigkeiten (Folie):**
+**Pakete und ihre Abhängigkeiten (Folie):**
 
 ```
 ┌───────────────────────────────────────────────────────┐
@@ -133,29 +133,29 @@ JACK ist eine Plattform zur Planung und Auslieferung von Lebensmitteln für Gro�
        events → architecture_core → core
 ```
 
-**Aufbau eines Domain-Packages (Folie):**
+**Aufbau eines Domänenpakete (Folie):**
 
-Jedes Domain-Package enthält selbst mehrere Packwerk-Packages — Packwerk erzwingt also nicht nur Grenzen zwischen Domains, sondern auch zwischen den Schichten *innerhalb* einer Domain:
+Jedes Domänenpaket enthält selbst mehrere Packwerk-Pakete — Packwerk erzwingt also nicht nur Grenzen zwischen Domains, sondern auch zwischen den Schichten *innerhalb* einer Domain:
 
 ```
-lib/packages/portioning/           ← Domain-Package
+lib/packages/portioning/           ← Domänenpaket
 ├── package.yml
-├── public/                        ← sichtbar für alle anderen Packages
+├── public/                        ← sichtbar für alle anderen Pakete
 │
-├── domain/                        ← eigenes Packwerk-Package
+├── domain/                        ← eigenes Packwerk-Paket
 │   └── package.yml                  visible_to: [portioning]
 │
-├── infrastructure/                ← eigenes Packwerk-Package
+├── infrastructure/                ← eigenes Packwerk-Paket
 │   └── package.yml                  visible_to: [portioning]
 │
-├── application/                   ← eigenes Packwerk-Package
+├── application/                   ← eigenes Packwerk-Paket
 │   └── package.yml                  visible_to: [portioning]
 │
-└── core_extension/                ← eigenes Packwerk-Package
-    └── package.yml                  geteilte Basistypen für andere Packages
+└── core_extension/                ← eigenes Packwerk-Paket
+    └── package.yml                  geteilte Basistypen für andere Pakete
 ```
 
-Cross-Package-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen zwischen Packages.
+Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen zwischen Pakete.
 
 ### Erfahrungen (7–8 min)
 
@@ -163,18 +163,18 @@ Cross-Package-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen zw
 
 > *„Packwerk löst keine schlechte Architektur. Es macht schlechte Architektur sichtbar."*
 
-**Kontext** (30 sek) — JACK: 23 Packages (5 Domain-Packages, je mit Sub-Packages für domain/, infrastructure/, core_extension/ + 3 Basis-Packages + Root). Packwerk von Beginn an im Einsatz.
+**Kontext** (30 sek) — JACK: 23 Pakete (5 Domänenpakete, je mit Unterpakete für domain/, infrastructure/, core_extension/ + 3 Basis-Pakete + Root). Packwerk von Beginn an im Einsatz.
 
 **Positive Erfahrungen** (2–3 min)
-- Lose Kopplung der Domänenaspekte durch Schnüren von Packages mit klar definierter public API
-- Durchsetzen strikter Architekturregeln durch Aufteilen der Domain-Packages in Sub-Packages — insbesondere die Sicherstellung, dass die Domäneschicht frei von externen Abhängigkeiten bleibt (Kernprinzip von DDD)
+- Lose Kopplung der Domänenaspekte durch Schnüren von Pakete mit klar definierter public API
+- Durchsetzen strikter Architekturregeln durch Aufteilen der Domänenpakete in Unterpakete — insbesondere die Sicherstellung, dass die Domäneschicht frei von externen Abhängigkeiten bleibt (Kernprinzip von DDD)
 - Aufgaben sind gut parallelisierbar, wenn sie durch Paketgrenzen klar abgegrenzt sind
-- Refactoring innerhalb eines Packages ohne Effekt nach außen möglich — dank stabiler public API
+- Refactoring innerhalb eines Pakete ohne Effekt nach außen möglich — dank stabiler public API
 
 **Herausforderungen** (2–3 min)
 - Die richtige Paketstruktur und -größe zu finden ist nicht trivial — eine falsche initiale Einteilung kostet beim Umschneiden Zeit
 - Teamkonsens zu Architekturregeln ist notwendig — fehlendes Wissen um die Paketstruktur erzeugt Reibungsverluste
-- Das Aggregieren und Aufbereiten von Informationen für die UI über mehrere Packages hinweg ist aufwändiger als im klassischen Monolithen
+- Das Aggregieren und Aufbereiten von Informationen für die UI über mehrere Pakete hinweg ist aufwändiger als im klassischen Monolithen
 
 ---
 
