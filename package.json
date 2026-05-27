@@ -1,0 +1,11 @@
+{
+  "name": "dresden-rb-packwerk-slides",
+  "private": true,
+  "scripts": {
+    "build": "marp slides/packwerk.md -o slides/packwerk.html",
+    "watch": "marp --watch slides/packwerk.md -o slides/packwerk.html"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^3"
+  }
+}
