@@ -249,3 +249,20 @@ section.quote h1 {
   line-height: 1.4;
   max-width: 900px;
 }
+
+/* ─── Breadcrumb ──────────────────────────────────────── */
+section header {
+  position: absolute;
+  top: 14px;
+  left: 64px;
+  font-size: 0.6em;
+  font-weight: 500;
+  color: var(--webit-green);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+section.title header,
+section.section header {
+  display: none;
+}

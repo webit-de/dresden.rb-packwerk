@@ -27,6 +27,7 @@ paginate: true
 ---
 
 <!-- _class: section -->
+<!-- header: "Motivation" -->
 
 # Motivation
 
@@ -66,6 +67,7 @@ MVC und Convention over Configuration lösen nicht das Problem von Abhängigkeit
 ---
 
 <!-- _class: section -->
+<!-- header: "Packwerk-Konzept" -->
 
 # Packwerk-Konzept
 
@@ -119,6 +121,7 @@ Bestehende Verstöße werden dokumentiert, nicht sofort behoben — pragmatische
 ---
 
 <!-- _class: section -->
+<!-- header: "webit! Einsatz" -->
 
 # Wie setzen wir Packwerk bei webit! ein?
 
@@ -194,6 +197,7 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 ---
 
 <!-- _class: section -->
+<!-- header: "Fazit" -->
 
 # Fazit & Q&A
 
