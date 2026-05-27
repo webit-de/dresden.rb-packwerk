@@ -181,18 +181,17 @@ Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen zwis
 ## Block 4: Fazit & Q&A (3 min)
 
 **Wann lohnt sich Packwerk?**
-- Rails-Monolith mit mehreren Teams oder mehr als einem Entwickler pro Bereich
-- Wenn Architektur-Diskussionen immer wieder dieselben Probleme zeigen
+- Langfristige Lebensdauer eines Rails-Monolithen, vermutlich insbesondere, wenn mehrere Teams daran arbeiten
+- Wenn Architektur-Smells auffallen, z.B. durch [Rubrowser](https://github.com/emad-elsaid/rubrowser)
 - Wenn langfristig Services angestrebt werden, aber der Zeitpunkt noch nicht gekommen ist
 
 **Wann lohnt es sich nicht?**
-- Kleine Teams mit einem Codebase-Owner
 - Projekte in früher Phase — erst das Produkt finden, dann Struktur
 
-**Ressource:** Shopify Engineering Blog + GitHub-Repo (ein Link, kein Folienstapel)
+**Ressource:** [Shopify Engineering Blog](https://shopify.engineering/enforcing-modularity-rails-apps-packwerk) + [GitHub-Repo](https://github.com/Shopify/packwerk)
 
 **Abschluss-Satz mit aktuellem Bezug:**
-> *„Wenn AI schneller Code produziert, brauchen wir bessere Grenzen zwischen diesem Code."*
+> *„KI schreibt Code schneller, als Menschen ihn in der Tiefe reviewen und prüfen können. Gut strukturierter Code macht das leichter. Packwerk setzt diese Struktur durch."*
 
 Dann Q&A öffnen.
 
