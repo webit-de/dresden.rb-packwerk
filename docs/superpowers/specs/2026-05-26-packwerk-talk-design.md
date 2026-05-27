@@ -165,24 +165,16 @@ Cross-Package-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen zw
 
 **Kontext** (30 sek) — JACK: 23 Packages (5 Domain-Packages, je mit Sub-Packages für domain/, infrastructure/, core_extension/ + 3 Basis-Packages + Root). Packwerk von Beginn an im Einsatz.
 
-**Was gut funktioniert hat** (2–3 min)
-- `package_todo.yml` als schrittweiser Einstieg war entscheidend
-- *(Platzhalter — eigene Learnings)*
-- *(Platzhalter — eigene Learnings)*
+**Positive Erfahrungen** (2–3 min)
+- Lose Kopplung der Domänenaspekte durch Schnüren von Packages mit klar definierter public API
+- Durchsetzen strikter Architekturregeln durch Aufteilen der Domain-Packages in Sub-Packages — insbesondere die Sicherstellung, dass die Domäneschicht frei von externen Abhängigkeiten bleibt (Kernprinzip von DDD)
+- Aufgaben sind gut parallelisierbar, wenn sie durch Paketgrenzen klar abgegrenzt sind
+- Refactoring innerhalb eines Packages ohne Effekt nach außen möglich — dank stabiler public API
 
-**Was schwieriger war als erwartet** (2–3 min)
-- Die erste Package-Struktur war falsch — Umschneiden kostet Zeit
-- Team-Buy-in braucht Überzeugungsarbeit
-- *(Platzhalter — eigene Learnings)*
-
-**Ehrliche Nachteile**
-- Package-Grenzen sind sozial, nicht nur technisch — das ist eine Kommunikationsaufgabe, kein Tooling-Problem
-- `package_todo.yml` kann zur Ausrede werden, Violations nie wirklich zu beheben
-- Zu viele Packages machen alles schlimmer — Micro-Packaging ist ein Anti-Pattern
-- „Modular Monolith" kann Buzzword werden ohne die Disziplin dahinter
-- Teams umgehen Regeln irgendwann — Werkzeug ersetzt keine Teamkultur
-
-**Schluss des Blocks:** „Ich zeige euch das nicht um euch abzuschrecken — sondern damit ihr realistisch einsteigt."
+**Herausforderungen** (2–3 min)
+- Die richtige Paketstruktur und -größe zu finden ist nicht trivial — eine falsche initiale Einteilung kostet beim Umschneiden Zeit
+- Teamkonsens zu Architekturregeln ist notwendig — fehlendes Wissen um die Paketstruktur erzeugt Reibungsverluste
+- Das Aggregieren und Aufbereiten von Informationen für die UI über mehrere Packages hinweg ist aufwändiger als im klassischen Monolithen
 
 ---
 
