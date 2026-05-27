@@ -5,8 +5,8 @@
 - **Veranstaltung:** Dresden.rb Ruby User Group
 - **Zielgruppe:** Techies / Ruby-Entwickler, kennen den Namen Packwerk, haben es aber nicht eingesetzt
 - **Dauer:** ~30 Minuten
-- **Format:** Vortrag mit Live-Demo
-- **Sprecher:** Steve Reinke (webit) — produktiver Einsatz von Packwerk im eigenen Projekt
+- **Format:** Vortrag
+- **Sprecher:** Steve Reinke & Christoph Wagner — Softwareentwickler bei webit!, produktiver Einsatz von Packwerk im eigenen Projekt
 
 ---
 
@@ -163,7 +163,7 @@ Cross-Package-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen zw
 
 > *„Packwerk löst keine schlechte Architektur. Es macht schlechte Architektur sichtbar."*
 
-**Kontext** (30 sek) — Projektgröße und Einsatzdauer bei webit
+**Kontext** (30 sek) — JACK: 23 Packages (5 Domain-Packages, je mit Sub-Packages für domain/, infrastructure/, core_extension/ + 3 Basis-Packages + Root). Packwerk von Beginn an im Einsatz.
 
 **Was gut funktioniert hat** (2–3 min)
 - `package_todo.yml` als schrittweiser Einstieg war entscheidend
