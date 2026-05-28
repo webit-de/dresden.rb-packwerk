@@ -109,9 +109,9 @@ Shopify developed it for their large monolithic system and released it in Septem
 | Approach | Advantage | Disadvantage |
 |----------|-----------|--------------|
 | Rails monolith | Fast | Entropy |
+| Modulith | Lightweight boundary enforcement | Design of packages |
 | Rails Engines | Stronger isolation | Heavyweight |
-| Microservices | Clear boundaries | Operational hell |
-| **Packwerk** | **Lightweight boundary enforcement** | **Static analysis only** |
+| Microservices | Clear boundaries | Operational hell, Communication overhead |
 
 ---
 
@@ -148,8 +148,6 @@ lib/packages/portioning/
 ├── application/      ← own package · visible_to: [portioning]
 └── core_extension/   ← shared base types for other packages
 ```
-
-Cross-package references via UUIDs only — no ActiveRecord associations.
 
 ---
 

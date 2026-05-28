@@ -109,9 +109,9 @@ Shopify entwickelte es für ihr großes monolithisches System und veröffentlich
 | Ansatz | Vorteil | Nachteil |
 |--------|---------|----------|
 | Rails-Monolith | Schnell | Entropie |
+| Modulith | Leichte Boundary Enforcement | Paketaufteilung |
 | Rails Engines | Stärkere Isolation | Schwergewichtiger |
-| Microservices | Klare Grenzen | Operative Hölle |
-| **Packwerk** | **Leichte Boundary Enforcement** | **Nur statische Analyse** |
+| Microservices | Klare Grenzen | Operative Hölle, Kommunikationsoverhead |
 
 ---
 
@@ -148,8 +148,6 @@ lib/packages/portioning/
 ├── application/      ← eigenes Paket · visible_to: [portioning]
 └── core_extension/   ← geteilte Basistypen für andere Pakete
 ```
-
-Cross-Paket-Referenzen nur über UUIDs — keine ActiveRecord-Assoziationen.
 
 ---
 
